@@ -37,6 +37,8 @@ public class JwtUtil {
     }
 
     // Extrai o nome de usuário do token JWT
+    //Para nosso exemplo, extraimos o email, pois foi assim que configuramos
+    //quando extendemos o UserDetails na nossa entity Usuario
     public String extractUsername(String token) {
         // Obtém o assunto (nome de usuário) das claims do token
         return extractClaims(token).getSubject();
