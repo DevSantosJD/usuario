@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 @Builder
 public class EnderecoDTO {
 
+    private Long id;
     private String rua;
     private Long numero;
     private String complemento;
