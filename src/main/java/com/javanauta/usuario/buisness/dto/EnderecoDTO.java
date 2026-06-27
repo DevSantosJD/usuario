@@ -1,8 +1,11 @@
 package com.javanauta.usuario.buisness.dto;
 
-import jakarta.persistence.Column;
-import lombok.*;
-import org.springframework.stereotype.Service;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Builder;
 
 @Getter
 @Setter
