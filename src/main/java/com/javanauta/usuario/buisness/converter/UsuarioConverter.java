@@ -15,6 +15,8 @@ import java.util.List;
 public class UsuarioConverter {
 
     //Convertendo para Usuario
+
+
     public Usuario paraUsuario(UsuarioDTO usuarioDTO){
         return Usuario.builder()
                 .nome(usuarioDTO.getNome())
@@ -25,10 +27,12 @@ public class UsuarioConverter {
                 .build();
     }
 
+    //pega cada endereço da lista dto, chama o metodo que converte endereco dto para entity e por fim, adiciona na lista de endereços entity
     public List<Endereco> paraListaEndereco(List<EnderecoDTO> enderecoDTOs){
         return enderecoDTOs.stream().map(this::paraEndereco).toList();
     }
 
+    //Converte endereço dto para endereço entity
     public Endereco paraEndereco(EnderecoDTO enderecoDTO){
         return Endereco.builder()
                 .rua(enderecoDTO.getRua())
@@ -56,6 +60,7 @@ public class UsuarioConverter {
     }
 
     //Convertendo para UsuarioDTO
+
 
     public UsuarioDTO paraUsuarioDTO(Usuario usuario){
         return UsuarioDTO.builder()
@@ -100,8 +105,8 @@ public class UsuarioConverter {
                 .build();
     }
 
-    // O metodo abaixo atualiza apenas os dados do usuario, atualizacao de enderecos e telefone
-    // serao realizados apenas nos metodos de atualizar endereco e atualizar telefones.
+    // O metodo abaixo atualiza apenas os dados do usuario, atualização de endereços e telefone
+    // serão realizados apenas nos metodos de atualizar endereço e atualizar telefones.
     public Usuario updateUsuario(UsuarioDTO usuarioDTO, Usuario entity){
         return Usuario.builder()
                 .nome(usuarioDTO.getNome() != null ? usuarioDTO.getNome() : entity.getNome())
@@ -129,6 +134,27 @@ public class UsuarioConverter {
                 .id(entity.getId())
                 .ddd(dto.getDdd() != null ? dto.getDdd() : entity.getDdd())
                 .numero(dto.getNumero() != null ? dto.getNumero() : entity.getNumero())
+                .build();
+    }
+
+
+    public Endereco paraEnderecoEntity(EnderecoDTO dto, Long idUsuario){
+        return Endereco.builder()
+                .rua(dto.getRua())
+                .numero(dto.getNumero())
+                .cidade(dto.getCidade())
+                .cep(dto.getCep())
+                .complemento(dto.getComplemento())
+                .estado(dto.getEstado())
+                .usuario_id(idUsuario)
+                .build();
+    }
+
+    public Telefone paraTelefoneEntity(TelefoneDTO dto, Long idUsuario){
+        return Telefone.builder()
+                .usuario_id(idUsuario)
+                .ddd(dto.getDdd())
+                .numero(dto.getNumero())
                 .build();
     }
 }

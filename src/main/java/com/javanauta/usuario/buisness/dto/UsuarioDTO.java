@@ -1,7 +1,10 @@
 package com.javanauta.usuario.buisness.dto;
 
-import lombok.*;
-import org.springframework.stereotype.Service;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Builder;
 
 import java.util.List;
 
